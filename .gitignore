@@ -1,0 +1,26 @@
+# ==========================================
+# BACKEND (Rust)
+# ==========================================
+# Ignoriert den Kompilierungs-Ordner
+/backend/target/
+
+# WICHTIG: Ignoriert die Datei mit den Datenbank-Zugangsdaten
+/backend/.env
+
+# Falls du SQLx Offline-Modus nutzt
+/backend/query-*.json
+
+# ==========================================
+# FRONTEND (Angular / Node)
+# ==========================================
+/frontend/node_modules/
+/frontend/.angular/
+/frontend/dist/
+
+# ==========================================
+# IDEs & SYSTEM
+# ==========================================
+.idea/
+.zed/
+.vscode/
+.DS_Store
