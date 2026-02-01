@@ -1,0 +1,32 @@
+services:
+  student-tracker:
+    image: postgres:18
+    container_name: student-tracker-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: student_tracker
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./database/init-student:/docker-entrypoint-initdb.d:Z
+      - student-tracker-data:/var/lib/postgresql:Z
+    restart: unless-stopped
+
+  employee-directory:
+    image: postgres:18
+    container_name: employee-directory-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: employee_directory
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./database/init-employee:/docker-entrypoint-initdb.d:Z
+      - employee-directory-data:/var/lib/postgresql:Z
+    restart: unless-stopped
+
+volumes:
+  student-tracker-data:
+  employee-directory-data:
